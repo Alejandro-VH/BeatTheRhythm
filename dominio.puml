@@ -1,0 +1,38 @@
+
+@startuml
+
+skin rose
+left to right direction
+Cliente"*"---"1"Sistema:interactua
+Sistema"1"---"*"Instrumentos: administra
+Instrumentos"1"---"1"instrumentoDeViento:puede ser
+Instrumentos"1"---"1"instrumentoDePercusion:puede ser
+Instrumentos"1"---"1"instrumentoDeCuerda:puede ser
+
+class Sistema{
+}
+class Instrumentos{
+nombre:String
+material:String
+codigo:int
+stock:int
+precio:int
+}
+
+class instrumentoDeViento{
+
+}
+
+class instrumentoDePercusion{
+tipoPercusion: String
+altura: String
+}
+
+class instrumentoDeCuerda{
+materialCuerda: String
+numeroCuerdas: int
+tipo:String
+}
+
+
+@enduml

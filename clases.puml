@@ -1,0 +1,90 @@
+@startuml
+
+skin rose
+
+model.Instrumento<|---model.Viento
+model.Instrumento<|---model.Cuerda
+model.Instrumento<|---model.Percusion
+model.listaInstrumento--->model.Instrumento
+services.Sistema--->services.Utils
+services.Sistema--->model.listaInstrumento
+services.Sistema<---Main
+
+
+left to right direction
+
+
+class Main{
++agregarInstrumento(Sistema sistema): void
++venderInstrumento(Sistema sistema): void
++generarBoleta(lista:Instrumento[],max:int ):void
+}
+package "services"{
+class Sistema{
+-instrumento: Instrumento[]
++Sistema()
++cargarInstrumentos():void
++guardarInformacion():void
++mostrarInventario():String
++buscarInstrumento(codigo):Instrumento
++agregarInstrumentos(int opcion, int precio, int stock, int codigo, String nombre, String material, String aux , String aux2, int auxNum):void
++agregarStockInstrumento(Instrumento instrumento, int cantidad):void
++realizarVenta(String codigo):void
++apagarSistema():void
+}
+class Utils{
++validarInstrumentoCuerda(String nombre,String material, String materialCuerdas , String tipo):boolean
++validarInstrumentoPercusion(String nombre,String material, String tipo,String altura):boolean
++validarInstrumentoViento(String nombre,String material):boolean
++pedirNumero(String enunciado): int
++pedirTipoInstrumento(String instrumento):int
++quitarTildes(texto:String): String
+}
+}
+package "model"{
+class listaInstrumento{
+-intrumentos: Instrumentos[]
+-cantActual: int
+-cantMax:int
++listaInstrumentos()
++agregarInstrumento(Instrumento nuevo):boolean
++obtenerInstrumento(String codigo):Instrumento
++eliminarInstrumento(String id):boolean
++getCantActual():int
+}
+abstract class Instrumento{
+-nombre:String
+-material:String
+-codigo:int
+-stock:int
+-precio:int
++Instrumento(codigo: String, precio:int, stock:int, nombre:String, material:String)
++getNombre():String
++getMaterial():String
++getCodigo():int
++getStock():int
++getPrecio():int
++venderInstrumento():void
++agregraInstrumento(cantidad: int):void
+}
+class Cuerda{
+-materialCuerda:String
+-numeroCuerdas:int
+-tipo:String
++Cuerda(codigo:int, precio:int, stock:int, nombre:String, materialCuerda:String, numeroCuerdas:int, material:String, tipo:String )
++getMaterialCuerda():String
++getNumeroCuerdas():int
++getTipo():String
+}
+class Viento{
++Viento(int codigo, int precio, int stock, String nombre, String material)
+}
+class Percusion{
+-tipoPercusion:String
+-altura:String
++Percusion(int codigo, int precio, int stock, String nombre, String material,String tipoPercusion, String altura)
++getTipoPercusion():String
++getAltura():String
+}
+}
+@enduml
