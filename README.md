@@ -1,6 +1,5 @@
 # BeatTheRhythm
-Taller 3: Beat the Rhythm 
+Taller 3 de programación Avanzada
 
-# Inregrantes
--Alejandro Villarroel
--Nicolas Galleguillos
+# Integrantes
+Alejandro Villarroel y Nicolas Galleguillos
